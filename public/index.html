@@ -26,6 +26,12 @@
         console.log('Escuchando:', payload);
         });
 
+        socket.on('nuevo-mensaje', (payload) => {
+            console.log('Nombre:'+ payload['nombre'] );
+            console.log('Mensaje:'+ payload['mensaje'] );
+        });
+      
+
     </script>
 </body>
 </html>
