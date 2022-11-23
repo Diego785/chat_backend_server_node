@@ -1,16 +1,17 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const dbConnection = async() => {
+require('dotenv').config({ path: '.env'});
 
-    try {
-        await mongoose.connect(process.env.DB_CNN); 
-
-    } catch (error) {
-        throw new Error('Error en la base de datos - Hable con el admin.');
-    }
-
-}
+const dbConnection = async () => {
+  try {
+    await mongoose.connect(process.env.DB_CNN, {
+      useNewUrlParser: true,
+    });
+  } catch (error) {
+    throw new Error("Error en la base de datos - Hable con el admin.");
+  }
+};
 
 module.exports = {
-    dbConnection
-}
+  dbConnection,
+};
