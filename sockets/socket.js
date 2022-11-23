@@ -8,7 +8,6 @@ const {
 
 //Mensajes de Sockets
 io.on("connection", (client) => {
-  console.log("Cliente Conectado");
 
   const [validate, uid] = comprobarJWT(client.handshake.headers["x-token"]);
 
@@ -32,10 +31,8 @@ io.on("connection", (client) => {
     io.to(payload.para).emit('mensaje-personal', payload);
   });
 
-  console.log("Cliente Autenticado");
 
   client.on("disconnect", () => {
-    console.log("Cliente Desconectado");
     usuarioDesconectado(uid);
   });
 
@@ -45,7 +42,6 @@ io.on("connection", (client) => {
   });
 
   /*client.on('mensaje',(payload) => {
-        console.log('Mensaje', payload);
 
         io.emit('mensaje', {admin: 'Nuevo mensaje'});
     });*/
