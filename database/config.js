@@ -1,12 +1,9 @@
 const mongoose = require("mongoose");
 
-require('dotenv').config({ path: '.env'});
 
 const dbConnection = async () => {
   try {
-    await mongoose.connect(process.env.DB_CNN, {
-      useNewUrlParser: true,
-    });
+    await mongoose.connect(process.env.DB_CNN);
   } catch (error) {
     throw new Error("Error en la base de datos - Hable con el admin.");
   }
