@@ -21,7 +21,7 @@ router.post('/new', [
 // post:/
 // validar email, password
 
-router.post('/', [
+router.post('/login', [
     check('email', 'El correo es obligatorio').isEmail(), 
     check('password', 'La contraseña es obligatoria').not().isEmpty()
 ],login);
