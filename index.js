@@ -27,7 +27,8 @@ app.use('/api/usuarios', require('./routes/usuarios'));
 app.use('/api/mensajes', require('./routes/mensajes'));
 
 
+const port = process.env.PORT || 3001;
 
-server.listen( process.env.PORT, (err)=> {
+server.listen( port , (err)=> {
     if(err)throw new Error(err);
 })
