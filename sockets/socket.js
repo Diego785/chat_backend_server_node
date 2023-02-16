@@ -41,6 +41,16 @@ io.on("connection", (client) => {
     client.broadcast.emit("nuevo-mensaje", payload);
   });
 
+  client.on("emitir-mensaje", (payload) => {
+    console.log(payload);
+    client.emit("emitir-respuesta", {respuesta: "Mensaje enviado correctamente"});
+  });
+
+  client.on("emitir-alerta", (payload) => {
+    client.emit("emitir-respuesta", payload);
+
+  })
+
   /*client.on('mensaje',(payload) => {
 
         io.emit('mensaje', {admin: 'Nuevo mensaje'});

@@ -61,7 +61,7 @@ const login = async (req, res = response) => {
     const validPassword = bcrypt.compareSync(password, usuarioDB.password);
     
     if(!validPassword){
-      return res.status(404).json({
+      return res.status(400).json({
         ok: false,
         msg: 'La contraseña no es válida'
       });

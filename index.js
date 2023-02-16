@@ -25,9 +25,11 @@ app.use(express.static(publicPath));
 app.use('/api/login', require('./routes/auth'));
 app.use('/api/usuarios', require('./routes/usuarios'));
 app.use('/api/mensajes', require('./routes/mensajes'));
+app.use('/api/productos', require('./routes/productos'));
 
 
-const port = process.env.PORT || 3000;
+
+const port = process.env.PORT || 3001;
 
 server.listen( port , (err)=> {
     if(err)throw new Error(err);
