@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 const { response } = require("express");
 const Producto = require("../models/producto");
 
@@ -32,4 +33,13 @@ const getEspecificProducts = async (req, res = response) => {
   });
 };
 
-module.exports = { crearProducto, getProduct, getEspecificProducts };
+const getProductoforId = async(req,res) => {
+  const productoId = req.params.codigo;
+  const producto = await Producto.findOne({_id : ObjectId(productoId)}).select("nombre");
+  res.json({
+      ok: true,
+      producto: producto
+  });
+}
+
+module.exports = { crearProducto, getProduct, getEspecificProducts, getProductoforId  };
