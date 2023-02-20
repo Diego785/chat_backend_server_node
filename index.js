@@ -26,7 +26,8 @@ app.use('/api/login', require('./routes/auth'));
 app.use('/api/usuarios', require('./routes/usuarios'));
 app.use('/api/mensajes', require('./routes/mensajes'));
 app.use('/api/productos', require('./routes/productos'));
-
+app.use('/api/recetas', require('./routes/recetas'));
+app.use('/api/prescripciones', require('./routes/prescripciones'));
 
 
 const port = process.env.PORT || 3001;

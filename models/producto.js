@@ -21,7 +21,6 @@ const ProductoSchema = Schema({
         type: String,
     },
 
-
 });
 
 module.exports = model('Producto', ProductoSchema);
