@@ -7,19 +7,20 @@ const ProductoSchema = Schema({
         required: true,
     },
 
-    fechaCreacion: {
-        type: Date,
-        required: false,
-    },
-
-    fechaVencimiento: {
-        type: Date,
-        required: true,
-    },
-
     foto: {
         type: String,
     },
+
+    descripcion:{
+        type: String,
+    },
+
+    categoria:{
+        type: Schema.Types.ObjectId,
+        ref: 'Categoria',
+        required: true
+    },
+
 
 });
 

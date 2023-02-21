@@ -28,6 +28,12 @@ app.use('/api/mensajes', require('./routes/mensajes'));
 app.use('/api/productos', require('./routes/productos'));
 app.use('/api/recetas', require('./routes/recetas'));
 app.use('/api/prescripciones', require('./routes/prescripciones'));
+app.use('/api/roles', require('./routes/roles'));
+app.use('/api/notificaciones', require('./routes/notificaciones'));
+app.use('/api/farmacias', require('./routes/farmacias'));
+app.use('/api/administradores', require('./routes/administradores'));
+app.use('/api/pacientes', require('./routes/pacientes'));
+app.use('/api/lotes', require('./routes/lotes'));
 
 
 const port = process.env.PORT || 3001;

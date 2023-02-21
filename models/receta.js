@@ -4,13 +4,13 @@ const RecetaSchema = Schema({
 
     vendedor:{
         type: Schema.Types.ObjectId,
-        ref: 'Usuario',
+        ref: 'Administrador',
         required: true
     },  
     
     cliente:{
         type: Schema.Types.ObjectId,
-        ref: 'Usuario',
+        ref: 'Paciente',
         required: true
     },
     fecha: {

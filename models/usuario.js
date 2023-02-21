@@ -6,7 +6,18 @@ const UsuarioSchema = Schema({
         type: String,
         required: true
     },
-    
+    apellido:{
+        type: String,
+        required: true
+    },
+    direccion:{
+        type: String,
+        required: true
+    },
+    telefono:{
+        type: String,
+        required: true
+    },
     email:{
         type: String,
         required: true,
@@ -19,7 +30,12 @@ const UsuarioSchema = Schema({
     online:{
         type: Boolean,
         default: false
-    },  
+    },
+    rol:{
+        type: Schema.Types.ObjectId,
+        ref: 'Rol',
+        required: true
+    },
 
 });
 
