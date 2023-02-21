@@ -1,6 +1,7 @@
 const { ObjectId } = require('mongodb');
 const { response } = require("express");
 const Producto = require("../models/producto");
+const Categoria = require("../models/categoria");
 
 const crearProducto = async (req, res = response) => {
   const producto = new Producto(req.body);
@@ -33,13 +34,40 @@ const getEspecificProducts = async (req, res = response) => {
   });
 };
 
+const getAvailableProducts = async (req, res = response) => {
+  const myProducts = await Producto.find().sort("fechaVencimiento").limit(2);
+
+  res.json({
+    ok: true,
+    myProducts,
+  });
+};
+
+const getExpiratedProducts = async (req, res = response) => {
+  const myProducts = await Producto.find().sort("fechaVencimiento").limit(1);
+
+  res.json({
+    ok: true,
+    myProducts,
+  });
+};
+
+const getCategories = async (req, res = response) => {
+  const categories = await Categoria.find();
+
+  res.json({
+    ok: true,
+    categories,
+  });
+};
+
 const getProductoforId = async(req,res) => {
   const productoId = req.params.codigo;
-  const producto = await Producto.findOne({_id : ObjectId(productoId)}).select("nombre");
+  const producto = await Producto.findOne({_id : ObjectId(productoId)});
   res.json({
       ok: true,
       producto: producto
   });
 }
 
-module.exports = { crearProducto, getProduct, getEspecificProducts, getProductoforId  };
+module.exports = { crearProducto, getProduct, getEspecificProducts, getAvailableProducts, getExpiratedProducts, getCategories, getProductoforId };

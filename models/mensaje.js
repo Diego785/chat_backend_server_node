@@ -26,7 +26,7 @@ const MensajeSchema = Schema({
 });
 
 MensajeSchema.method('toJSON', function (){
-    const { __v, _id, ...object } = this.toObject();
+    const { __v, _id,  ...object } = this.toObject();
     return object;
 })
 
