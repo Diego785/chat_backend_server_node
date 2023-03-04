@@ -2,6 +2,7 @@ const { ObjectId } = require('mongodb');
 const { response } = require("express");
 const Producto = require("../models/producto");
 const Categoria = require("../models/categoria");
+const Lote = require('../models/lote');
 
 const crearProducto = async (req, res = response) => {
   const producto = new Producto(req.body);
@@ -27,7 +28,7 @@ const getEspecificProducts = async (req, res = response) => {
   const d = new Date();
   const d2 = new Date(d.getFullYear(), d.getMonth(), d.getDate());
   const d3 = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 7);
-  const myProducts = await Producto.find({"fechaVencimiento":{$gte: d2, $lte: d3}}).select("nombre , fechaVencimiento").limit(30);
+  const myProducts = await Lote.find({"fechaVencimiento":{$gte: d2, $lte: d3}}).select("fechaVencimiento").populate("producto", {nombre: 1}).limit(30);
   res.json({
     ok: true,
     myProducts
@@ -70,4 +71,13 @@ const getProductoforId = async(req,res) => {
   });
 }
 
-module.exports = { crearProducto, getProduct, getEspecificProducts, getAvailableProducts, getExpiratedProducts, getCategories, getProductoforId };
+const getProducts = async (req, res = response) => {
+  const myProducts = await Producto.find().select("nombre");
+
+  res.json({
+    ok: true,
+    myProducts,
+  });
+};
+
+module.exports = { crearProducto, getProduct, getEspecificProducts, getAvailableProducts, getExpiratedProducts, getCategories, getProductoforId, getProducts };

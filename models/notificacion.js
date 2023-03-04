@@ -5,7 +5,7 @@ const NotificacionSchema = Schema({
     contenido: {
         type: String,
         required: true,
-    }
+    },
     
 });
 

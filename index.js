@@ -34,6 +34,7 @@ app.use('/api/farmacias', require('./routes/farmacias'));
 app.use('/api/administradores', require('./routes/administradores'));
 app.use('/api/pacientes', require('./routes/pacientes'));
 app.use('/api/lotes', require('./routes/lotes'));
+app.use('/api/cuerpos', require('./routes/cuerpos'));
 
 
 const port = process.env.PORT || 3001;

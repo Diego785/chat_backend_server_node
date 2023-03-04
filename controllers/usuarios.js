@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 const { response } = require("express");
 const Usuario = require('../models/usuario');
 
@@ -17,4 +18,13 @@ const getUsers = async (req, res = response) => {
   });
 };
 
-module.exports = { getUsers };
+const getUsuarioPaciente = async (req, res = response) => {
+  const myPacientes = await Usuario.find({rol: { $ne: ObjectId("63f43da99b10d175599227e3")}}).select("nombre").select("apellido");
+
+  res.json({
+    ok: true,
+    myPacientes,
+  });
+};
+
+module.exports = { getUsers, getUsuarioPaciente };
